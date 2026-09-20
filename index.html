@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raíz & Alma | Herbolaria Natural</title>
+<style>
+  :root {
+    --verde-oscuro: #2f4a3c;
+    --verde-medio: #5c8a6a;
+    --verde-claro: #a8c9a1;
+    --crema: #f7f3ea;
+    --dorado: #c9a15a;
+    --texto: #33362f;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: 'Georgia', 'Segoe UI', serif;
+    background: var(--crema);
+    color: var(--texto);
+    line-height: 1.6;
+  }
+  header {
+    background: linear-gradient(135deg, var(--verde-oscuro), var(--verde-medio));
+    color: white;
+    padding: 20px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  header .logo {
+    font-size: 1.6rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 25px;
+    font-size: 0.95rem;
+    transition: opacity 0.3s;
+  }
+  nav a:hover { opacity: 0.75; }
+  .hero {
+    background: linear-gradient(rgba(47,74,60,0.75), rgba(47,74,60,0.65)),
+                repeating-linear-gradient(45deg, #3a5c47, #3a5c47 20px, #34543f 20px, #34543f 40px);
+    color: white;
+    text-align: center;
+    padding: 120px 8% 100px;
+  }
+  .hero h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+  }
+  .hero p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto 35px;
+    color: var(--verde-claro);
+  }
+  .btn {
+    display: inline-block;
+    background: var(--dorado);
+    color: var(--verde-oscuro);
+    padding: 14px 34px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: transform 0.3s, background 0.3s;
+  }
+  .btn:hover {
+    background: #dbb571;
+    transform: translateY(-3px);
+  }
+  section {
+    padding: 80px 8%;
+  }
+  .titulo-seccion {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  .titulo-seccion h2 {
+    font-size: 2.2rem;
+    color: var(--verde-oscuro);
+  }
+  .titulo-seccion p {
+    color: #6b6f63;
+    margin-top: 10px;
+  }
+  .productos {
+    background: white;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+  }
+  .card {
+    background: var(--crema);
+    border-radius: 16px;
+    padding: 35px 25px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  }
+  .card .icono {
+    font-size: 3rem;
+    margin-bottom: 15px;
+  }
+  .card h3 {
+    color: var(--verde-oscuro);
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+  }
+  .nosotros {
+    background: var(--verde-claro);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 40px;
+  }
+  .nosotros .texto {
+    flex: 1;
+    min-width: 280px;
+  }
+  .nosotros .texto h2 {
+    color: var(--verde-oscuro);
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  .nosotros .grafico {
+    flex: 1;
+    min-width: 260px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .hoja-svg {
+    width: 220px;
+    height: 220px;
+  }
+  .beneficios {
+    background: var(--crema);
+  }
+  .lista-beneficios {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .beneficio {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    border-left: 5px solid var(--dorado);
+  }
+  .beneficio span.check {
+    font-size: 1.4rem;
+    color: var(--verde-medio);
+  }
+  .testimonios {
+    background: var(--verde-oscuro);
+    color: white;
+    text-align: center;
+  }
+  .testimonios .titulo-seccion h2 { color: white; }
+  .testimonios .titulo-seccion p { color: var(--verde-claro); }
+  .cita {
+    max-width: 700px;
+    margin: 0 auto 20px;
+    font-style: italic;
+    font-size: 1.15rem;
+  }
+  .autor {
+    color: var(--dorado);
+    font-weight: bold;
+  }
+  .contacto {
+    background: white;
+    text-align: center;
+  }
+  .contacto form {
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .contacto input, .contacto textarea {
+    padding: 14px 16px;
+    border: 1px solid #cfcabf;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-family: inherit;
+  }
+  .contacto textarea { resize: vertical; min-height: 100px; }
+  .contacto .btn { align-self: center; border: none; cursor: pointer; }
+  .datos-contacto {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    color: var(--verde-oscuro);
+  }
+  footer {
+    background: var(--verde-oscuro);
+    color: var(--verde-claro);
+    text-align: center;
+    padding: 30px 8%;
+    font-size: 0.9rem;
+  }
+  footer .redes {
+    margin-top: 10px;
+  }
+  footer .redes span {
+    margin: 0 8px;
+    font-size: 1.3rem;
+    cursor: pointer;
+  }
+  @media (max-width: 600px) {
+    header { flex-direction: column; gap: 12px; }
+    nav a { margin: 0 10px; }
+    .hero h1 { font-size: 2.1rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">🌿 Raíz & Alma</div>
+  <nav>
+    <a href="#productos">Productos</a>
+    <a href="#nosotros">Nosotros</a>
+    <a href="#beneficios">Beneficios</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>El poder curativo de la naturaleza, en tus manos</h1>
+  <p>Herbolaria artesanal elaborada con plantas 100% naturales, cultivadas con respeto a la tierra y a la sabiduría ancestral mexicana.</p>
+  <a href="#contacto" class="btn">Conoce nuestros productos</a>
+</section>
+
+<section class="productos" id="productos">
+  <div class="titulo-seccion">
+    <h2>Nuestros productos estrella</h2>
+    <p>Remedios naturales para cada necesidad de tu bienestar</p>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <div class="icono">🍵</div>
+      <h3>Tés e infusiones</h3>
+      <p>Mezclas de hierbas secas seleccionadas para relajación, digestión y buen dormir.</p>
+    </div>
+    <div class="card">
+      <div class="icono">💧</div>
+      <h3>Tinturas madre</h3>
+      <p>Extractos concentrados de plantas medicinales, ideales para tratamientos específicos.</p>
+    </div>
+    <div class="card">
+      <div class="icono">🧴</div>
+      <h3>Aceites esenciales</h3>
+      <p>Puros y prensados en frío, perfectos para aromaterapia y masajes terapéuticos.</p>
+    </div>
+    <div class="card">
+      <div class="icono">🌸</div>
+      <h3>Cremas y ungüentos</h3>
+      <p>Elaborados a mano con árnica, caléndula y otras plantas de uso tradicional.</p>
+    </div>
+    <div class="card">
+      <div class="icono">🍯</div>
+      <h3>Jarabes naturales</h3>
+      <p>A base de miel y hierbas para fortalecer las defensas y aliviar molestias respiratorias.</p>
+    </div>
+    <div class="card">
+      <div class="icono">🌱</div>
+      <h3>Plantas frescas</h3>
+      <p>Cultivadas en nuestro propio herbario, cosechadas en su punto óptimo.</p>
+    </div>
+  </div>
+</section>
+
+<section class="nosotros" id="nosotros">
+  <div class="texto">
+    <h2>Tradición, tierra y sabiduría</h2>
+    <p>En Raíz & Alma llevamos más de 15 años preservando el conocimiento herbolario mexicano. Trabajamos directamente con productores locales y cultivamos gran parte de nuestras plantas de forma orgánica, sin pesticidas ni químicos.</p>
+    <br>
+    <p>Cada producto es elaborado en pequeños lotes para garantizar frescura, pureza y máxima efectividad. Creemos que la naturaleza ya tiene las respuestas que buscamos para vivir con más salud y equilibrio.</p>
+  </div>
+  <div class="grafico">
+    <svg class="hoja-svg" viewBox="0 0 200 200">
+      <path d="M100 20 C 150 40, 180 90, 100 180 C 20 90, 50 40, 100 20 Z" fill="#2f4a3c"/>
+      <line x1="100" y1="180" x2="100" y2="30" stroke="#c9a15a" stroke-width="3"/>
+      <path d="M100 60 Q 130 70 100 90" stroke="#c9a15a" stroke-width="2" fill="none"/>
+      <path d="M100 100 Q 70 110 100 130" stroke="#c9a15a" stroke-width="2" fill="none"/>
+    </svg>
+  </div>
+</section>
+
+<section class="beneficios" id="beneficios">
+  <div class="titulo-seccion">
+    <h2>¿Por qué elegirnos?</h2>
+    <p>Compromiso real con tu salud y con el planeta</p>
+  </div>
+  <div class="lista-beneficios">
+    <div class="beneficio">
+      <span class="check">✔</span>
+      <div><strong>100% natural</strong><br>Sin conservadores ni químicos artificiales.</div>
+    </div>
+    <div class="beneficio">
+      <span class="check">✔</span>
+      <div><strong>Cultivo orgánico</strong><br>Respetamos los ciclos de la tierra en cada cosecha.</div>
+    </div>
+    <div class="beneficio">
+      <span class="check">✔</span>
+      <div><strong>Elaboración artesanal</strong><br>Procesos hechos a mano, en pequeños lotes.</div>
+    </div>
+    <div class="beneficio">
+      <span class="check">✔</span>
+      <div><strong>Asesoría personalizada</strong><br>Te ayudamos a elegir el producto ideal para ti.</div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonios">
+  <div class="titulo-seccion">
+    <h2>Lo que dicen de nosotros</h2>
+    <p>Historias reales de nuestra comunidad</p>
+  </div>
+  <p class="cita">"Desde que tomo el té para dormir de Raíz & Alma, mis noches cambiaron por completo. Se nota la diferencia de un producto hecho con cuidado."</p>
+  <p class="autor">— Mariana G.</p>
+  <br>
+  <p class="cita">"El aceite de árnica es increíble para los dolores musculares después de entrenar. Ya es parte de mi rutina."</p>
+  <p class="autor">— Roberto T.</p>
+</section>
+
+<section class="contacto" id="contacto">
+  <div class="titulo-seccion">
+    <h2>Contáctanos</h2>
+    <p>Resolvemos tus dudas y te ayudamos a elegir tu remedio ideal</p>
+  </div>
+  <form onsubmit="return false;">
+    <input type="text" placeholder="Tu nombre" required>
+    <input type="email" placeholder="Tu correo electrónico" required>
+    <textarea placeholder="Escribe tu mensaje..." required></textarea>
+    <button class="btn" type="submit">Enviar mensaje</button>
+  </form>
+  <div class="datos-contacto">
+    <div>📍 Av. de las Hierbas 123, CDMX</div>
+    <div>📞 55 1234 5678</div>
+    <div>✉️ contacto@raizyalma.mx</div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2024 Raíz & Alma Herbolaria. Todos los derechos reservados.</p>
+  <div class="redes">
+    <span>📘</span><span>📸</span><span>🐦</span>
+  </div>
+</footer>
+
+</body>
+</html>
